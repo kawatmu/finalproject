@@ -20,58 +20,58 @@
 using namespace std;
 
 
-const int  max_num = 1024;//ƒNƒŠƒAğŒ‚Ìİ’è
+const int  max_num = 1024;//ã‚¯ãƒªã‚¢æ¡ä»¶ã®è¨­å®š
 
 auto scoredis(int board[5][4], int step) {
 	int point = 0;
 	point = board[4][2];
-	cout << "ƒXƒRƒA" << "\033[3;33m" << point << "\033[m" << "@@@è”:" << step << endl;
+	cout << "ã‚¹ã‚³ã‚¢" << "\033[3;33m" << point << "\033[m" << "ã€€ã€€ã€€æ‰‹æ•°:" << step << endl;
 }
 
-//“à•”s—ñ‚©‚ç•\¦Œ`®‚Ö‚Ì•ÏŠ·
+//å†…éƒ¨è¡Œåˆ—ã‹ã‚‰è¡¨ç¤ºå½¢å¼ã¸ã®å¤‰æ›
 void display(int board[5][4]) {
 	int new_x = board[4][0];
 	int new_y = board[4][1];
 	cout << "+-----+-----+-----+-----+" << endl;
 	for (int i = 0; i < 4; i++) {
 		cout << "|";
-		for (int j = 0; j < 4; j++) {//’Ç‰Á‚µ‚½”š‚Ì“_–Å•\¦
+		for (int j = 0; j < 4; j++) {//è¿½åŠ ã—ãŸæ•°å­—ã®ç‚¹æ»…è¡¨ç¤º
 			if (i == new_x && j == new_y) {
-				if (board[i][j] == 0 || board[i][j] == 2 || board[i][j] == 4 || board[i][j] == 8) {	//0,2,4,8‚Ìê‡(0‚Ìê‡‚Í‘¶İ‚µ‚È‚¢)
+				if (board[i][j] == 0 || board[i][j] == 2 || board[i][j] == 4 || board[i][j] == 8) {	//0,2,4,8ã®å ´åˆ(0ã®å ´åˆã¯å­˜åœ¨ã—ãªã„)
 					//	cout << "   " << "\033[31m" << board[i][j] << "\033[m " << " | ";
 					cout << "   " << "\033[6;31m" << board[i][j] << "\033[m " << "|";
 				}
-				else if (board[i][j] == 16 || board[i][j] == 32 || board[i][j] == 64) {				//16,32,64‚Ìê‡
+				else if (board[i][j] == 16 || board[i][j] == 32 || board[i][j] == 64) {				//16,32,64ã®å ´åˆ
 					cout << "  " << "\033[6;31m" << board[i][j] << "\033[m " << "|";
 				}
-				else if (board[i][j] == 128 || board[i][j] == 256 || board[i][j] == 512) {			//128,256,512‚Ìê‡
+				else if (board[i][j] == 128 || board[i][j] == 256 || board[i][j] == 512) {			//128,256,512ã®å ´åˆ
 					cout << " " << "\033[6;31m" << board[i][j] << "\033[m " << "|";
 				}
-				else if (board[i][j] == 1024 || board[i][j] == 2048) {								//1024,2048‚Ìê‡
+				else if (board[i][j] == 1024 || board[i][j] == 2048) {								//1024,2048ã®å ´åˆ
 					cout << "" << "\033[6;31m" << board[i][j] << "\033[m " << "|";
 				}
 				else {
-					cout << "ƒGƒ‰[”­¶Ä‹N“®‚µ‚Ä‚­‚¾‚³‚¢" << endl;									//‚»‚êˆÈŠO‚Ìê‡ƒGƒ‰[
+					cout << "ã‚¨ãƒ©ãƒ¼ç™ºç”Ÿå†èµ·å‹•ã—ã¦ãã ã•ã„" << endl;									//ãã‚Œä»¥å¤–ã®å ´åˆã‚¨ãƒ©ãƒ¼
 				}
 			}
 			else {
-				if (board[i][j] == 0) {	//0‚Ìê‡
+				if (board[i][j] == 0) {	//0ã®å ´åˆ
 					cout << "     |";
 				}
-				else if (board[i][j] == 2 || board[i][j] == 4 || board[i][j] == 8) {				//2,4,8‚Ìê‡
+				else if (board[i][j] == 2 || board[i][j] == 4 || board[i][j] == 8) {				//2,4,8ã®å ´åˆ
 					cout << "   " << board[i][j] << " |";
 				}
-				else if (board[i][j] == 16 || board[i][j] == 32 || board[i][j] == 64) {				//16,32,64‚Ìê‡
+				else if (board[i][j] == 16 || board[i][j] == 32 || board[i][j] == 64) {				//16,32,64ã®å ´åˆ
 					cout << "  " << board[i][j] << " |";
 				}
-				else if (board[i][j] == 128 || board[i][j] == 256 || board[i][j] == 512) {			//128,256,512‚Ìê‡
+				else if (board[i][j] == 128 || board[i][j] == 256 || board[i][j] == 512) {			//128,256,512ã®å ´åˆ
 					cout << " " << board[i][j] << " |";
 				}
-				else if (board[i][j] == 1024 || board[i][j] == 2048) {								//1024,2048‚Ìê‡
+				else if (board[i][j] == 1024 || board[i][j] == 2048) {								//1024,2048ã®å ´åˆ
 					cout << "" << board[i][j] << " |";
 				}
 				else {
-					cout << "ƒGƒ‰[”­¶Ä‹N“®‚µ‚Ä‚­‚¾‚³‚¢" << endl;									//‚»‚êˆÈŠO‚Ìê‡ƒGƒ‰[
+					cout << "ã‚¨ãƒ©ãƒ¼ç™ºç”Ÿå†èµ·å‹•ã—ã¦ãã ã•ã„" << endl;									//ãã‚Œä»¥å¤–ã®å ´åˆã‚¨ãƒ©ãƒ¼
 				}
 			}
 		}
@@ -80,26 +80,26 @@ void display(int board[5][4]) {
 	}
 }
 
-void cleardisplay(int board[5][4]) {  //ƒNƒŠƒA‚Ì•\¦
+void cleardisplay(int board[5][4]) {  //ã‚¯ãƒªã‚¢æ™‚ã®è¡¨ç¤º
 	cout << "+-----+-----+-----+-----+" << endl;
 	for (int i = 0; i < 4; i++) {
 		cout << "|";
-		for (int j = 0; j < 4; j++) {//’Ç‰Á‚µ‚½”š‚Ì“_–Å•\¦
-			if (board[i][j] == 0 || board[i][j] == 2 || board[i][j] == 4 || board[i][j] == 8) {	//0,2,4,8‚Ìê‡
+		for (int j = 0; j < 4; j++) {//è¿½åŠ ã—ãŸæ•°å­—ã®ç‚¹æ»…è¡¨ç¤º
+			if (board[i][j] == 0 || board[i][j] == 2 || board[i][j] == 4 || board[i][j] == 8) {	//0,2,4,8ã®å ´åˆ
 				//	cout << "   " << "\033[31m" << board[i][j] << "\033[m " << " | ";
 				cout << "   " << board[i][j] << " |";
 			}
-			else if (board[i][j] == 16 || board[i][j] == 32 || board[i][j] == 64) {				//16,32,64‚Ìê‡
+			else if (board[i][j] == 16 || board[i][j] == 32 || board[i][j] == 64) {				//16,32,64ã®å ´åˆ
 				cout << "  " << board[i][j] << " |";
 			}
-			else if (board[i][j] == 128 || board[i][j] == 256 || board[i][j] == 512) {			//128,256,512‚Ìê‡
+			else if (board[i][j] == 128 || board[i][j] == 256 || board[i][j] == 512) {			//128,256,512ã®å ´åˆ
 				cout << " " << board[i][j] << " |";
 			}
-			else if (board[i][j] == 1024 || board[i][j] == 2048) {								//1024,2048‚Ìê‡
+			else if (board[i][j] == 1024 || board[i][j] == 2048) {								//1024,2048ã®å ´åˆ
 				cout << "" << "\033[6;34m" << board[i][j] << "\033[m " << "|";
 			}
 			else {
-				cout << "ƒGƒ‰[”­¶Ä‹N“®‚µ‚Ä‚­‚¾‚³‚¢" << endl;									//‚»‚êˆÈŠO‚Ìê‡ƒGƒ‰[
+				cout << "ã‚¨ãƒ©ãƒ¼ç™ºç”Ÿå†èµ·å‹•ã—ã¦ãã ã•ã„" << endl;									//ãã‚Œä»¥å¤–ã®å ´åˆã‚¨ãƒ©ãƒ¼
 			}
 		}
 		cout << endl;
@@ -107,7 +107,7 @@ void cleardisplay(int board[5][4]) {  //ƒNƒŠƒA‚Ì•\¦
 	}
 }
 
-auto clearcheck(int checkboard[5][4]) { //ƒNƒŠƒAğŒ‚ğ–‚½‚µ‚Ä‚¢‚é‚©‚Ì”»’è
+auto clearcheck(int checkboard[5][4]) { //ã‚¯ãƒªã‚¢æ¡ä»¶ã‚’æº€ãŸã—ã¦ã„ã‚‹ã‹ã®åˆ¤å®š
 	int clear_check = 1;
 	std::vector<int> pair_spacex;
 	std::vector<int> pair_spacey;
@@ -124,7 +124,7 @@ auto clearcheck(int checkboard[5][4]) { //ƒNƒŠƒAğŒ‚ğ–‚½‚µ‚Ä‚¢‚é‚©‚Ì”»’è
 }
 
 
-int overcheck(int checkboard[5][4]) { //ƒQ[ƒ€ƒI[ƒo[ğŒ‚ğ–‚½‚µ‚Ä‚¢‚é‚©‚Ç‚¤‚©‚Ì”»’è
+int overcheck(int checkboard[5][4]) { //ã‚²ãƒ¼ãƒ ã‚ªãƒ¼ãƒãƒ¼æ¡ä»¶ã‚’æº€ãŸã—ã¦ã„ã‚‹ã‹ã©ã†ã‹ã®åˆ¤å®š
 	std::vector<int> pair_spacex;
 	std::vector<int> pair_spacey;
 	for (int i = 0; i < 4; i++) {
@@ -146,7 +146,7 @@ int overcheck(int checkboard[5][4]) { //ƒQ[ƒ€ƒI[ƒo[ğŒ‚ğ–‚½‚µ‚Ä‚¢‚é‚©‚Ç‚¤‚©
 	}
 }
 
-auto add(int baseboard[5][4]) { //‰Šúó‘Ô‚Ì•\¦—p
+auto add(int baseboard[5][4]) { //åˆæœŸçŠ¶æ…‹ã®è¡¨ç¤ºç”¨
 	std::vector<int> pair_spacex;
 	std::vector<int> pair_spacey;
 	for (int i = 0; i < 4; i++) {
@@ -231,30 +231,30 @@ auto add2(int baseboard[5][4], int list[21]) {
 	return baseboard;
 }
 
-string keypattern(string key_in) {//ˆÚ“®•ûŒü‚Ì•\¦
+string keypattern(string key_in) {//ç§»å‹•æ–¹å‘ã®è¡¨ç¤º
 	string pattern;
 	while (1) {
 		if (key_in == "w") {
-			pattern = "ã";
+			pattern = "ä¸Š";
 			break;
 		}
 		else if (key_in == "s") {
-			pattern = "‰º";
+			pattern = "ä¸‹";
 			break;
 		}
 		else if (key_in == "a") {
-			pattern = "¶";
+			pattern = "å·¦";
 			break;
 		}
 		else if (key_in == "d") {
-			pattern = "‰E";
+			pattern = "å³";
 			break;
 		}
 	}
 	return pattern;
 }
 
-auto Move_up(int baseboard[5][4]) {//ãˆÚ“®ŠÖ”
+auto Move_up(int baseboard[5][4]) {//ä¸Šç§»å‹•é–¢æ•°
 	for (int l = 0; l < 2; l++) {
 		for (int j = 0; j < 4; j++) {
 			for (int k = 0; k < 3; k++) {
@@ -281,7 +281,7 @@ auto Move_up(int baseboard[5][4]) {//ãˆÚ“®ŠÖ”
 	return baseboard;
 }
 
-auto Move_down(int baseboard[5][4]) {//‰ºˆÚ“®ŠÖ”
+auto Move_down(int baseboard[5][4]) {//ä¸‹ç§»å‹•é–¢æ•°
 	for (int l = 0; l < 2; l++) {
 		for (int j = 0; j < 4; j++) {
 			for (int k = 0; k < 3; k++) {
@@ -308,7 +308,7 @@ auto Move_down(int baseboard[5][4]) {//‰ºˆÚ“®ŠÖ”
 	return baseboard;
 }
 
-auto Move_left(int baseboard[5][4]) {//¶ˆÚ“®ŠÖ”
+auto Move_left(int baseboard[5][4]) {//å·¦ç§»å‹•é–¢æ•°
 	for (int l = 0; l < 2; l++) {
 		for (int i = 0; i < 4; i++) {
 			for (int k = 0; k < 3; k++) {
@@ -335,7 +335,7 @@ auto Move_left(int baseboard[5][4]) {//¶ˆÚ“®ŠÖ”
 	return baseboard;
 }
 
-auto Move_right(int baseboard[5][4]) { //‰EˆÚ“®ŠÖ”
+auto Move_right(int baseboard[5][4]) { //å³ç§»å‹•é–¢æ•°
 	for (int l = 0; l < 2; l++) {
 		for (int i = 0; i < 4; i++) {
 			for (int k = 0; k < 3; k++) {
@@ -369,7 +369,7 @@ int fileo(int board[5][4], char* time) {
 		file.close();
 	}
 	else {
-		std::cout << "ƒtƒ@ƒCƒ‹‚ğŠJ‚¯‚Ü‚¹‚ñ‚Å‚µ‚½B";
+		std::cout << "ãƒ•ã‚¡ã‚¤ãƒ«ã‚’é–‹ã‘ã¾ã›ã‚“ã§ã—ãŸã€‚";
 	}
 	return 0;
 }
@@ -390,22 +390,22 @@ public:
 
 
 int main(int argc, char* args[]) {
-	int board_s[5][4] = { {0,0,0,0},{0,0,0,0},{0,0,0,0},{0,0,0,0},{5,0,0,0} };//5~4s—ñ‚Ìì¬(‰Šúó‘Ô)
-	//4s–Ú‚Ü‚Å‚Í•\¦”ÍˆÍ@5s–Ú‚Í’Ç‰Á‚µ‚½”‚ÌÀ•W,ƒXƒRƒA,è”‹L˜^—p
+	int board_s[5][4] = { {0,0,0,0},{0,0,0,0},{0,0,0,0},{0,0,0,0},{5,0,0,0} };//5Ã—4è¡Œåˆ—ã®ä½œæˆ(åˆæœŸçŠ¶æ…‹)
+	//4è¡Œç›®ã¾ã§ã¯è¡¨ç¤ºç¯„å›²ã€€5è¡Œç›®ã¯è¿½åŠ ã—ãŸæ•°ã®åº§æ¨™,ã‚¹ã‚³ã‚¢,æ‰‹æ•°è¨˜éŒ²ç”¨
 	// 
-	//int board_s[5][4] = { {512,512,32,64},{128,64,64,4},{2,8,64,16},{512,0,0,0},{0,0,0,0} };//5~4s—ñ‚Ìì¬(‰Šúó‘Ô)
-	//int board_s[5][4] = { {512,512,64,32},{16,16,2,4},{8,0,0,0},{0,0,0,0},{0,0,0,0} };//5~4s—ñ‚Ìì¬(‰Šúó‘Ô)
+	//int board_s[5][4] = { {512,512,32,64},{128,64,64,4},{2,8,64,16},{512,0,0,0},{0,0,0,0} };//5Ã—4è¡Œåˆ—ã®ä½œæˆ(åˆæœŸçŠ¶æ…‹)
+	//int board_s[5][4] = { {512,512,64,32},{16,16,2,4},{8,0,0,0},{0,0,0,0},{0,0,0,0} };//5Ã—4è¡Œåˆ—ã®ä½œæˆ(åˆæœŸçŠ¶æ…‹)
 	add(board_s);
-	add(board_s);//‰Šúó‘Ô‚É2ŒÂ”š’Ç‰Á
+	add(board_s);//åˆæœŸçŠ¶æ…‹ã«2å€‹æ•°å­—è¿½åŠ 
 
-	cout << "1024ƒQ[ƒ€" << endl;
-	cout << "‚±‚ÌƒQ[ƒ€‚Í2‚Ìæ”‚ğ‡‚í‚¹‚Ä‚Ç‚ñ‚Ç‚ñ”‚ğ‘å‚«‚­‚µ‚Ä‚¢‚­ƒQ[ƒ€‚Å‚·" << endl;
-	cout << "‘S‚Ä‚Ì”š‚ğ@w‚Åã‚ÉˆÚ“®@@s‚Å‰º‚ÉˆÚ“®@@a‚Å¶‚ÉˆÚ“®@@d‚Å‰E‚ÉˆÚ“®‚µ‚Ü‚·" << endl;
-	cout << "ã‰º‚É“®‚©‚µ‚½‚Æ‚«‚Íã‚Ü‚½‚Í‰º‚É“¯‚¶”š‚ª‚ ‚Á‚½‚ç‚»‚Ì”š‚ª‚Ü‚Æ‚Ü‚è," << endl;
-	cout << "¶‰E‚É“®‚©‚µ‚½‚Æ‚«‚Í¶‚Ü‚½‚Í‰E‚É“¯‚¶”š‚ª‚ ‚Á‚½‚ç‚»‚Ì”š‚ª‚Ü‚Æ‚Ü‚è‚Ü‚·" << endl;
-	cout << "ˆÚ“®Œã‚Í2,4,8,16,32‚ªƒ‰ƒ“ƒ_ƒ€‚ÈêŠ‚Éˆê‚Â’Ç‰Á‚³‚ê‚Ü‚·" << endl;
-	cout << "1024‚ª‚Å‚«‚½‚çƒQ[ƒ€ƒNƒŠƒA@ˆÚ“®Œã‚É”š‚ª‚Ü‚Æ‚Ü‚ç‚¸‚·‚×‚Ä‚Ìƒ}ƒX‚ª–„‚Ü‚Á‚Ä‚¢‚½‚çƒQ[ƒ€ƒI[ƒo[‚Æ‚È‚è‚Ü‚·" << endl;
-	cout << "   " << "\033[5m" << "ƒGƒ“ƒ^[‚ÅƒXƒ^[ƒg" << "\033[m " << endl;
+	cout << "1024ã‚²ãƒ¼ãƒ " << endl;
+	cout << "ã“ã®ã‚²ãƒ¼ãƒ ã¯2ã®ä¹—æ•°ã‚’åˆã‚ã›ã¦ã©ã‚“ã©ã‚“æ•°ã‚’å¤§ããã—ã¦ã„ãã‚²ãƒ¼ãƒ ã§ã™" << endl;
+	cout << "å…¨ã¦ã®æ•°å­—ã‚’ã€€wã§ä¸Šã«ç§»å‹•ã€€ã€€sã§ä¸‹ã«ç§»å‹•ã€€ã€€aã§å·¦ã«ç§»å‹•ã€€ã€€dã§å³ã«ç§»å‹•ã—ã¾ã™" << endl;
+	cout << "ä¸Šä¸‹ã«å‹•ã‹ã—ãŸã¨ãã¯ä¸Šã¾ãŸã¯ä¸‹ã«åŒã˜æ•°å­—ãŒã‚ã£ãŸã‚‰ãã®æ•°å­—ãŒã¾ã¨ã¾ã‚Š," << endl;
+	cout << "å·¦å³ã«å‹•ã‹ã—ãŸã¨ãã¯å·¦ã¾ãŸã¯å³ã«åŒã˜æ•°å­—ãŒã‚ã£ãŸã‚‰ãã®æ•°å­—ãŒã¾ã¨ã¾ã‚Šã¾ã™" << endl;
+	cout << "ç§»å‹•å¾Œã¯2,4,8,16ãŒãƒ©ãƒ³ãƒ€ãƒ ãªå ´æ‰€ã«ä¸€ã¤è¿½åŠ ã•ã‚Œã¾ã™" << endl;
+	cout << "1024ãŒã§ããŸã‚‰ã‚²ãƒ¼ãƒ ã‚¯ãƒªã‚¢ã€€ç§»å‹•å¾Œã«æ•°å­—ãŒã¾ã¨ã¾ã‚‰ãšã™ã¹ã¦ã®ãƒã‚¹ãŒåŸ‹ã¾ã£ã¦ã„ãŸã‚‰ã‚²ãƒ¼ãƒ ã‚ªãƒ¼ãƒãƒ¼ã¨ãªã‚Šã¾ã™" << endl;
+	cout << "   " << "\033[5m" << "ã‚¨ãƒ³ã‚¿ãƒ¼ã§ã‚¹ã‚¿ãƒ¼ãƒˆ" << "\033[m " << endl;
 	istream::int_type ch;
 	while (1) {
 		if ((ch = cin.get()) != EOF) {
@@ -414,54 +414,54 @@ int main(int argc, char* args[]) {
 	}
 
 	int step = 0;
-	int list[21] = { 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0 };//U‚ç‚Î‚è‚ÌŠm”F—ps—ñ
+	int list[21] = { 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0 };//æ•£ã‚‰ã°ã‚Šã®ç¢ºèªç”¨è¡Œåˆ—
 
-	display(board_s);//‰Šúó‘Ô‚ğ•\¦
+	display(board_s);//åˆæœŸçŠ¶æ…‹ã‚’è¡¨ç¤º
 	board_s[4][2] = 0;
 
 	while (1) {
 		int clear_code = clearcheck(board_s);
 		if (clear_code == 0) {
-			cout << "‚¨‚ß‚Å‚Æ‚¤I@ƒQ[ƒ€ƒNƒŠƒAII" << endl;
+			cout << "ãŠã‚ã§ã¨ã†ï¼ã€€ã‚²ãƒ¼ãƒ ã‚¯ãƒªã‚¢ï¼ï¼" << endl;
 			break;
 		}
 
 		string cin_key;
 		while (1) {
 			string input;
-			cout << "‘€ì‚ğs‚Á‚Ä‚­‚¾‚³‚¢@@wFª@@sF«@@aF©@@dF¨" << endl;
-			cout << "‘€ì>" << endl; cin >> cin_key;
+			cout << "æ“ä½œã‚’è¡Œã£ã¦ãã ã•ã„ã€€ã€€wï¼šâ†‘ã€€ã€€sï¼šâ†“ã€€ã€€aï¼šâ†ã€€ã€€dï¼šâ†’" << endl;
+			cout << "æ“ä½œ>" << endl; cin >> cin_key;
 			if (cin_key == "w" || cin_key == "s" || cin_key == "a" || cin_key == "d") {
 				break;
 			}
 			else {
-				cout << cin_key << "\n" << "‚à‚¤ˆê“x“ü—Í‚µ‚Ä‚­‚¾‚³‚¢" << endl;
+				cout << cin_key << "\n" << "ã‚‚ã†ä¸€åº¦å…¥åŠ›ã—ã¦ãã ã•ã„" << endl;
 			}
 		}
 
-		cout << keypattern(cin_key) << endl; //ˆÚ“®•ûŒü‚Ì•\¦
+		cout << keypattern(cin_key) << endl; //ç§»å‹•æ–¹å‘ã®è¡¨ç¤º
 		cout << endl;
 		cout << endl;
 		if (cin_key == "w") {
-			Move_up(board_s);//ãˆÚ“®ŠÖ”
+			Move_up(board_s);//ä¸Šç§»å‹•é–¢æ•°
 		}
 		if (cin_key == "s") {
-			Move_down(board_s);//‰ºˆÚ“®ŠÖ”
+			Move_down(board_s);//ä¸‹ç§»å‹•é–¢æ•°
 		}
 		if (cin_key == "a") {
-			Move_left(board_s);//¶ˆÚ“®ŠÖ”
+			Move_left(board_s);//å·¦ç§»å‹•é–¢æ•°
 		}
 		if (cin_key == "d") {
-			Move_right(board_s);//‰EˆÚ“®ŠÖ”
+			Move_right(board_s);//å³ç§»å‹•é–¢æ•°
 		}
 
-		this_thread::sleep_for(chrono::milliseconds(500)); // “®‚«‚ğ’x‰„‚³‚¹‚é
-		step += 1; //è”+1
+		this_thread::sleep_for(chrono::milliseconds(500)); // å‹•ãã‚’é…å»¶ã•ã›ã‚‹
+		step += 1; //æ‰‹æ•°+1
 
 		int over_code = overcheck(board_s);
 		if (over_code == 0) {
 			display(board_s);
-			cout << "c”O@ƒQ[ƒ€ƒI[ƒo[" << endl;
+			cout << "æ®‹å¿µã€€ã‚²ãƒ¼ãƒ ã‚ªãƒ¼ãƒãƒ¼" << endl;
 			break;
 		}
 
@@ -471,7 +471,7 @@ int main(int argc, char* args[]) {
 	}
 	board_s[4][3] = step;
 
-	char* time_now; //“úæ“¾—p
+	char* time_now; //æ—¥æ™‚å–å¾—ç”¨
 	time_t t = time(NULL);
 	struct tm local;
 	localtime_s(&local, &t);
@@ -487,9 +487,9 @@ int main(int argc, char* args[]) {
 	vector<SCORE> scores;
 	vector<int> highscore;
 
-	while (getline(datafile, str)) {// ƒtƒ@ƒCƒ‹‚©‚ç1s‚¸‚Â“Ç‚İ‚Ş
-		sregex_token_iterator it(str.begin(), str.end(), rx, -1); // ,‚Å•ªŠ„‚·‚éƒCƒeƒŒ[ƒ^
-		sregex_token_iterator end; // ƒCƒeƒŒ[ƒ^‚ÌI‚í‚è
+	while (getline(datafile, str)) {// ãƒ•ã‚¡ã‚¤ãƒ«ã‹ã‚‰1è¡Œãšã¤èª­ã¿è¾¼ã‚€
+		sregex_token_iterator it(str.begin(), str.end(), rx, -1); // ,ã§åˆ†å‰²ã™ã‚‹ã‚¤ãƒ†ãƒ¬ãƒ¼ã‚¿
+		sregex_token_iterator end; // ã‚¤ãƒ†ãƒ¬ãƒ¼ã‚¿ã®çµ‚ã‚ã‚Š
 
 		if (it != end) {
 			SCORE score;
@@ -512,15 +512,15 @@ int main(int argc, char* args[]) {
 
 	cout << endl;
 	sort(highscore.rbegin(), highscore.rend());
-	cout << "¡‚Ü‚Å‚ÌÅ‚“¾“_‚Í" << "\033[3;33m" << highscore[0] << "\033[m" << "“_" << endl;
+	cout << "ä»Šã¾ã§ã®æœ€é«˜å¾—ç‚¹ã¯" << "\033[3;33m" << highscore[0] << "\033[m" << "ç‚¹" << endl;
 	cout << endl;
-	cout << "“¾“_‹L˜^" << endl;
+	cout << "å¾—ç‚¹è¨˜éŒ²" << endl;
 	for (const auto& score : scores) {
-		cout << "“¾“_:" << score.getscore() << "“_(è”" << score.getstep() << ",‹L˜^“ú:" << score.gettime() << ")" << endl;
+		cout << "å¾—ç‚¹:" << score.getscore() << "ç‚¹(æ‰‹æ•°" << score.getstep() << ",è¨˜éŒ²æ—¥æ™‚:" << score.gettime() << ")" << endl;
 	}
 	//for (int l = 0; l < 21; l++) {
 	//	cout << list[l] << ",";
-	//}; //U‚ç‚Î‚è‹ï‡‚ÌŠm”F
-	//remove("example.txt"); //“¾“_‹L˜^‚ÌƒŠƒZƒbƒg—p
+	//}; //æ•£ã‚‰ã°ã‚Šå…·åˆã®ç¢ºèª
+	//remove("example.txt"); //å¾—ç‚¹è¨˜éŒ²ã®ãƒªã‚»ãƒƒãƒˆç”¨
 
 }
